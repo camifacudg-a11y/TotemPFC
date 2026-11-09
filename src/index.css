@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+/* Paleta de zonificación sensorial (bajo estímulo, acabado mate) */
+@theme {
+  --font-sans: "Lexend", "Century Gothic", "Avenir", ui-sans-serif, system-ui, sans-serif;
+
+  --color-calma: #A8D8EA;   /* Fondo general / zonas de calma */
+  --color-lila: #D8C4E8;    /* Zonas de calma alternativa */
+  --color-salvia: #B7C9A8;  /* Transición / verbos */
+  --color-arena: #E8DFC8;   /* Transición / sustantivos */
+  --color-juego: #F4D03F;   /* Juego activo / sujetos */
+  --color-alerta: #FF7F50;  /* Alertas y límites (uso mínimo) */
+  --color-tinta: #1B2430;   /* Texto y bordes de alto contraste */
+  --color-papel: #FFFFFF;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-calma font-sans text-tinta antialiased;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+    overscroll-behavior: none;
+  }
+
+  img {
+    -webkit-user-drag: none;
+    pointer-events: none;
+  }
+
+  /* Foco visible sin sombras: contorno sólido */
+  :focus-visible {
+    outline: 6px solid var(--color-tinta);
+    outline-offset: 4px;
+  }
+
+  /* Cero animaciones: se desactiva cualquier transición heredada */
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    box-shadow: none !important;
+    scroll-behavior: auto !important;
+  }
+}
